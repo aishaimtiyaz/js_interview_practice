@@ -1,0 +1,90 @@
+🔁 Microtask Queue vs Macrotask Queue
+MacroTask and Micro Task queue--> JS is single threaded language  but it can handled asynchronous operations using event loop.
+
+Microtasks have higher priority than macrotasks, After the call stack is empty microtasks are executed first then one macrotask, then repaets.
+example of microsks --> promises,mutation observer
+example of macrotasks --> setTimeout, setIntervals, 
+
+👉 Two queues with priority rules
+Microtasks → small, urgent follow-ups (Promise reactions)
+Macrotasks → scheduled or external events (timers, clicks)
+This ensures:
+Promise chains run immediately after sync code
+UI stays responsive
+
+Predictable async execution
+⚙️ How it works internally (Event Loop)
+🔥 Event Loop Algorithm (simplified)
+
+Execute synchronous code
+Call stack becomes empty
+Execute ALL microtasks
+Execute ONE macrotask
+Render (if needed)
+Repeat forever
+
+📌 Key rule to memorize
+
+Microtask queue is drained completely before the next macrotask runs.
+
+Example
+console.log("Script start");
+setTimeout(()=>{
+    console.log("setTimeout")}, 0);
+    Promise.resolve().then(()=>{console.log("Promise resolved")});
+console.log("Script end");
+
+
+output: Script start Script end Promise resolved setTimeout
+
+⚠️ Edge Cases / Gotchas (INTERVIEW GOLD)
+🐞 Gotcha 1: Promise executor is synchronous
+new Promise(()=>{
+    console.log("Promise executor");
+}}
+    console.log("after");
+✅ Output:
+            Promise executor 
+            after
+
+👉 Only .then() goes to microtask queue
+
+🐞 Gotcha 2: Microtasks can starve macrotasks
+
+function loop(){
+Promise.resolve().then(loop);
+}
+loop();
+
+macrotasks never execute
+UI freezes
+Microtask starvation
+
+🐞 Gotcha 3: Nested microtasks
+
+Promise.resolve().then(()=>{
+console.log("First");
+
+Promise.resolve().then(()=>
+    console.log("Second"));
+})
+
+👉 Microtasks added during microtask execution
+are executed before moving to macrotasks
+First
+Second
+
+🐞 Gotcha 4: setTimeout(0) ≠ immediate
+setTimeout(() => console.log("timeout"), 0);
+Promise.resolve().then(() => console.log("promise"));
+
+
+✅ Output:
+promise
+timeout
+
+👉 0ms still means macrotask
+
+
+*/
+} 
