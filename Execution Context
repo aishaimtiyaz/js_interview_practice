@@ -1,0 +1,189 @@
+// console.error(message);
+      {/**
+        What is Execution context
+        Execution context is the environment where js code is evaluated. It created in two phases 1.memory Allocation phase 2. executuion phase and managed using the call stack.
+        It defines variables, functions, scope chain and value of this.
+
+        InDepth theory
+        Execcution context is the environment where JS code is evaluated and executed. 
+        It decides-
+        -What Variables Exisit
+        -What function exist
+        -What this refres ti
+        -How scope is resolved
+
+        IT created in two phases 
+        1. Global Execution Context (GEC)
+         -Craeted when js file start running, -Only one per program
+         Contains- Gloabal object (window in browser), this global object, all global variables and functions
+
+        2. Functional Execution Context ()
+          Created every every time when function gets called
+          can be many
+          Each function call -->  new execution context
+
+         Each execution context is running in two phases
+         1. Memory allocation phase - 
+            Before running any code JS scans code and 
+            CREATES:
+            - variables Environment
+            - Lexical Environments
+            - Scope Chain
+            - this Binding
+          
+            What happens to variables 
+            var --> undefined
+            let/const --> undefined(TDZ)
+            functions declarations --> fully hoisted
+          
+         Example :
+         console.log(a); //undefined
+         var a = 10;
+         console.log(b); //RefrencerError
+         let b = 20;
+
+         🔹 Function Hoisting
+          foo() // works
+          function foo(){
+            console.log("hello");
+          }
+
+          function is stored entirely during creation phase.
+
+
+          2️⃣ Execution Phase
+          Now JS runs code line by line
+          -Assigns actual values,
+          -Executes functions
+          -Creates new execution contexts for function calls
+
+          🧠 Call Stack & Execution Context
+           JS uses call stack to manage execution contexts.
+           example
+           function a()
+           {
+             b();
+           }
+            function b()
+            {
+            console.log("b");
+            } 
+            a();
+
+            CALL STACK FLOW 
+            Global EC
+             -> a() EC
+               -> b() EC
+            
+            After execution:
+            b() popped 
+            a() popped
+            back to global EC
+
+            🔗 Scope Chain (VERY FREQUENT QUESTION)
+            Scope chain is a mechanism to resolve variables
+
+            Each execution context has a refrence to 
+             - its own lexical environment
+             - parent lexical environment
+             - Global environment
+
+             ex-
+             let x=10;
+             function outer()
+             {
+               let y = 20;
+
+               function inner()
+               {
+                 console.log(x,y);
+               }
+                 inner();
+             }
+                 outer();
+
+            Resolution order: Inner -> outer -> global
+
+            🧠 this in Execution Context 
+
+            Global EC
+            this === window //browser
+
+            Function EC
+            function f() {
+                console.log(this);
+              }
+            f(); //window (non-strict), undefined striuct mode
+
+
+            METHOD EC
+            obj.method(); this will be redirect to object here this = object
+
+            Arrow Function
+            No its own 'this'
+
+            Inherit from its parent Execution Context
+
+            ⚠️ Tricky Interview Edge Cases
+            ❓ Why let is hoisted but inaccessible?
+
+            console.log(a); // Refrence Error
+            let a=20;
+
+            because 'a' is hoisted but stays in TDZ untill initialization line is reached;
+
+            ❓ Why function expressions are not hoisted?
+            foo()//typeError
+
+            var foo=>(){
+            console.log('hello from foo');
+            }
+            
+            foo is hoisted with undefined function body assigned later
+
+           🔥 FULL WALKTHROUGH (INTERVIEW GOLD )
+           var a = 1;
+
+            function outer() {
+              var b = 2;
+
+              function inner() {
+                console.log(a + b);
+              }
+
+              inner();
+            }
+
+            outer();
+
+            Step by Step
+            1. Global EC
+            a=undefined
+            outer = functin full definition
+            2. execution
+            a=1;
+            outer(); --> new EC -
+            b=undefined
+            inner = function
+
+            SCOPE RESOLUTION 
+            a from global
+            b from outer
+
+        🧠 Interview One-Liners (MEMORIZE)
+
+        EC is an environment that evaluate and execute the js, 
+        JS creates Execution in two phases A. Creation and execution,
+        Execution contexts are managed using the call stack,
+        Scope chain resolves variables lexically
+
+        🧪 MOST ASKED INTERVIEW QUESTIONS
+        1. What is execution context?
+        EC is an environment where JS code evaluate and execute.
+        it creates in two phases 1. memory allocation phase that conatin global object this window in browser, function definition and  and execution phase
+         and manged using the callstack,
+         IT defines variables, functions, scope chain and value of this.
+
+
+
+        */}
