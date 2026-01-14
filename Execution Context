@@ -201,7 +201,13 @@ During this phase, hoisting happens — var variables are initialized with undef
         it creates in two phases 1. memory allocation phase that conatin global object this window in browser, function definition and  and execution phase
          and manged using the callstack,
          IT defines variables, functions, scope chain and value of this.
-
-
-
+      2. Good. Can you tell me how execution context is related to the call stack?
+Execution context defines the environment in which code runs, including variables, scope, and this,
+the call stack is a data structure that keeps track of execution contexts- it pushes a new execution context whever a function is called and pops it once the function finises
+🔥 Tiny example (ONLY if interviewer asks)
+function a() {
+  b();
+}
+function b() {}
+a();
         */}
