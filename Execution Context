@@ -210,4 +210,9 @@ function a() {
 }
 function b() {}
 a();
+Global EC
+→ a() EC
+→ b() EC
+→ pop b
+→ pop a
         */}
