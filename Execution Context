@@ -1,8 +1,18 @@
 // console.error(message);
       {/**
         What is Execution context
-        Execution context is the environment where js code is evaluated. It created in two phases 1.memory Allocation phase 2. executuion phase and managed using the call stack.
-        It defines variables, functions, scope chain and value of this.
+            Execution context is an environment where JS code evaluate and execute
+            
+            it create in two phases 
+            1. creation phase where memory is allocated to variables, functions and this refrence 2. execution phase where code gets execute line by line and call functions 
+            
+            in creation phase hoisting happend where var variables hoist with undefined and let and const are hoisted but not initialized, and remain in the Temporal Dead Zone where variable is not accessible untill its initialization line reached and function gets fully hoisted
+            
+            example 
+            console.log(a) --> undefined
+            var a=10;
+            console.log(b); --> refrence error
+            let b=20;
 
         InDepth theory
         Execcution context is the environment where JS code is evaluated and executed. 
