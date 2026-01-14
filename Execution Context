@@ -7,6 +7,14 @@
             1. creation phase where memory is allocated to variables, functions and this refrence 2. execution phase where code gets execute line by line and call functions 
             
             in creation phase hoisting happend where var variables hoist with undefined and let and const are hoisted but not initialized, and remain in the Temporal Dead Zone where variable is not accessible untill its initialization line reached and function gets fully hoisted
+
+Execution context is the environment in which JavaScript code is evaluated and executed.
+It is created in two phases:
+
+1. Creation phase, where memory is allocated for variables, functions, and the this reference.
+During this phase, hoisting happens — var variables are initialized with undefined, function declarations are fully hoisted, while let and const are hoisted but stay in the Temporal Dead Zone.
+
+2. Execution phase, where code is executed line by line and function calls create new execution contexts.
             
             example 
             console.log(a) --> undefined
