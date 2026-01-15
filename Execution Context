@@ -246,7 +246,12 @@ Which variables belong where
 Which function is running
 What this refers to
 How to return after a function ends
-    
-  
+
+
+How does execution context help JavaScript handle closures?
+      for every function call, JS creates a new execution context that allocaltes memory to variables, functions, and the this value.
+    If an inner function accesses variables from its outer function JS preserves the outer function's lexical environment, This retained lexical environment is what forms closures,
+    allowing the inner function to access those variables even after the outer functions's execution context has finished.
+    ⏱️ ~20 seconds
 
         */}
