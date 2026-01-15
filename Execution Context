@@ -215,4 +215,38 @@ Global EC
 → b() EC
 → pop b
 → pop a
+
+Can you explain how hoisting works internally using execution context?
+Execution context defines the environment where JavaScript code is evaluated and executed.
+It is created in two phases.
+
+First is the creation phase, where memory is allocated for variables, function declarations, and the this reference.
+During this phase, hoisting happens — var variables are initialized with undefined, function declarations are fully hoisted, and let and const are hoisted but kept in the Temporal Dead Zone, so they cannot be accessed before initialization.
+
+Second is the execution phase, where code runs line by line and variables are assigned their actual values.
+
+⏱️ ~30 seconds
+Why does JavaScript need execution contexts? What problem does it solve?
+
+  
+    
+    JS needs execution contexts to manage single threaded environment. Execution centexts provide a structured way to store variables , functions, scope chain, and the this value for each piece of code,
+    They also allow js to track function calls using the call stack and support features like hoisting and lexical scoping.
+
+    🧠 If interviewer asks “can you simplify?”
+
+You can add:
+Without execution contexts, JavaScript wouldn’t know which variables belong to which function or how to execute nested calls correctly.
+
+    🧠 Simple mental model (for YOU)
+
+Execution context = workspace for running code
+Without it, JS wouldn’t know:
+Which variables belong where
+Which function is running
+What this refers to
+How to return after a function ends
+    
+  
+
         */}
