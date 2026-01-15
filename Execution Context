@@ -249,9 +249,18 @@ How to return after a function ends
 
 
 How does execution context help JavaScript handle closures?
+For every function call, JavaScript creates a new execution context that allocates memory for variables, functions, and the this value.
+If an inner function accesses variables from its outer function, JavaScript preserves the outer function’s lexical environment.
+This retained lexical environment is what forms a closure, allowing the inner function to access those variables even after the outer function’s execution context has finished.
+⏱️ ~20 seconds
+
+If execution contexts are destroyed after function execution, how do closures still access variables?
       for every function call, JS creates a new execution context that allocaltes memory to variables, functions, and the this value.
     If an inner function accesses variables from its outer function JS preserves the outer function's lexical environment, This retained lexical environment is what forms closures,
     allowing the inner function to access those variables even after the outer functions's execution context has finished.
     ⏱️ ~20 seconds
-
+When a function finishes execution, its execution context is removed from the call stack.
+However, if an inner function still references variables from that function, JavaScript preserves the lexical environment, not the execution context itself.
+This preserved lexical environment is attached to the inner function, forming a closure, which allows the inner function to access those variables even after the outer function has finished executing.
+⏱️ ~20 seconds
         */}
