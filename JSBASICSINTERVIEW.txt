@@ -1,0 +1,10 @@
+❓ Question 1 (Warm-up)
+What is JavaScript, and why is it called single-threaded?
+JS is high level, interpreted programming language primirily use to build intiractive web applications,
+It is called single-threaded because it has a single call stack, meaning it can execute one task at a time in the main execution context.
+
+Although JS is single-threaded, it handles asynchronous tasks using event loop, allowing non blocking behaviour.
+
+❓ Question 2
+How does JavaScript handle asynchronous operations if it is single-threaded?
+  
