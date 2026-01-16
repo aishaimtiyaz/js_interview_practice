@@ -1,0 +1,33 @@
+  ❓ Question 2
+
+How does JavaScript handle asynchronous operations if it is single-threaded?
+  Although js is single threaded, it handles async operations using the event loop.
+   when async tasks like promises and timers are completed, their callback are placed into either the macrotask or microtasks queue.
+
+   The event loop continously checks if call stack is empty, then executes all microtask first followed by macritasks , allowing non blocking behaviour. 
+
+   ❓ Question 3 (VERY COMMON)
+
+Predict the output of the following code and explain why.
+
+  console.log("start");
+
+  setTimeout(() => {
+    console.log("timeout");
+  }, 0);
+
+  Promise.resolve().then(() => {
+    console.log("promise");
+  });
+
+  console.log("end");
+
+  output-->
+
+   - start --> end --> promise --> timeout 
+   first sync code will run then promises and then timer will get execute
+
+   ❓ Question 4 (TRICKY BUT COMMON)
+
+What happens if a microtask keeps scheduling another microtask?
+Can this affect macrotasks or UI rendering?
