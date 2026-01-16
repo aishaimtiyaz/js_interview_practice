@@ -31,3 +31,8 @@ Predict the output of the following code and explain why.
 
 What happens if a microtask keeps scheduling another microtask?
 Can this affect macrotasks or UI rendering?
+
+
+if a maicroTask continously schedules another microtask, the micro task never emptied. 
+Since the event loop must drained the microtask first before moving to macro tasks or rendring, this can block macrotasks and cause the UI to freeze,
+this situation is known as macrotask starvation.
